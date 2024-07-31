@@ -8,6 +8,19 @@ Bugs and fixes when configuring ML environments
 
    Solution: check the system gcc version using `gcc --version` and downgrade it if needed, also remember to check the gcc installed using conda using `conda list | grep gcc`
 
+## Dependency Issue
+1. When installing `transformers[dev]` using Python 3.11
+
+   Error:
+   ```
+   Collecting av==9.2.0 (from transformers==4.44.0.dev0)
+   Using cached av-9.2.0.tar.gz (2.4 MB)
+   Installing build dependencies ... done
+   Getting requirements to build wheel ... error
+   ```
+
+   Solution: av 9.2.0 doesn't support Python 3.11, so you'll need to downgrade it or modify `setup.py`.
+
 ## Matplotlib Error
 1. When using plot in Jupyter Notebook
 
