@@ -27,6 +27,12 @@ Bugs and fixes when configuring ML environments
 
    Solution: av 9.2.0 doesn't support Python 3.11, so you'll need to downgrade it or modify `setup.py`.
 
+2. Deepspeed: File "/opt/conda/envs/infercept/lib/python3.11/site-packages/deepspeed/elasticity/elastic_agent.py", line 9, in <module>
+    from torch.distributed.elastic.agent.server.api import log, _get_socket_with_port
+ImportError: cannot import name 'log' from 'torch.distributed.elastic.agent.server.api'
+
+   Solution: Simply update deepspeed will work.
+
 ## Matplotlib Error
 1. When using plot in Jupyter Notebook
 
