@@ -33,6 +33,29 @@ ImportError: cannot import name 'log' from 'torch.distributed.elastic.agent.serv
 
    Solution: Simply update deepspeed will work.
 
+3. When running CMake: version `OPENSSL_3.2.0' not found (required by cmake)
+
+   Solution: The error is due to that CMake is too new compared to the system's OpenSSL, so reinstall CMake from source:
+   ```bash
+   # Example steps:
+   # 1. Download and extract CMake
+   wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
+   tar -xzf cmake-3.27.1.tar.gz
+   cd cmake-3.27.1
+   
+   # 2. Configure
+   # Note: By default, the build will look for system OpenSSL. If you need
+   # a specific path, pass -DOPENSSL_ROOT_DIR=/path/to/ssl
+   ./bootstrap --prefix=/usr/local
+   
+   # 3. Build and install
+   make -j$(nproc)
+   sudo make install
+   
+   # 4. Verify the installed version
+   /usr/local/bin/cmake --version
+   ```
+
 ## Matplotlib Error
 1. When using plot in Jupyter Notebook
 
